@@ -1,0 +1,66 @@
+@use "../abstracts" as *;
+
+.navigation__list-item {
+    list-style-type: none;
+    display: block;
+    float: left;
+
+    &--mobile-hidden {
+        @media (max-width: $breakpoint-md) {
+            display: none;
+        }
+    }
+
+    &--menu {
+        float: right;
+        font-size: 3rem;
+    }
+
+    &-logo {
+        width: 4rem;
+        height: 4rem;
+        fill: currentColor;
+        /*Farbe vom Elternelement übernommen*/
+    }
+}
+    
+
+.navigation__list-item-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0.25rem 0.25rem 0.25rem;
+    /*Padding klickbar, Margin nicht*/
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: block;
+    /*Links standardmäßig inline, kein Margin, deshalb Block hier*/
+    text-shadow: 0 0 0.5rem black;
+
+    &:hover {
+        border-bottom: 0.2rem solid $color-primary;
+    }
+
+    .navigation__list-item--menu & {
+        margin-top: 0.4rem;
+        margin-right: 0;
+        padding-right: 0;
+
+        &:hover {
+            /*wenn list-item-link Child von Menu ist im Hover, dann Anwendung*/
+            border-bottom: none;
+            color: rgb(200, 200, 200);
+        }
+    }
+
+    &--logo {
+        margin-top: 0.9rem;
+        padding-left: 0;
+        margin-left: 0; /*damit Logo an definierter Container-Grenze liegt*/
+
+        &:hover {
+            border-bottom: none;
+            color: rgb(200, 200, 200);
+        }
+    }
+}

@@ -1,0 +1,139 @@
+@use "../../abstracts" as *;
+
+
+$-motivation__image-hover-padding: 0.33rem;
+$-motivation__image-hover-border: 0.33rem;
+
+.motivation {
+    margin-top: 2rem;
+}
+
+.motivation__column-text {
+    float: left;
+    width: 33.33%;
+    padding-right: 4.5rem;
+    padding-top: 4rem;
+
+    @media (max-width: $breakpoint-l) {
+        padding-right: 3rem;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        padding-right: 0;
+        width: 50%;
+        padding-top: 0;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        float: none;
+        width: 100%;
+        padding-bottom: 3rem;
+    }
+}
+
+.motivation__text-heading {
+    color: $color-secondary;
+    font-weight: 500;
+    font-size: 2rem;
+
+    &::before {
+        content:"";
+        display:block;
+
+        width: 3rem;
+        height: 0.25rem;
+        background-color: $color-secondary-light;
+        margin-bottom: 0.5rem;
+    }
+
+}
+
+.motivation__text-paragraph {
+    color:$color-secondary;
+    margin-top: 0.2rem;
+    font-size: 1.1rem;
+}
+
+.motivation__column-images {
+    float: left; /*auch hier verwendet, da dann der Rest von Bildern umflossen werden*/
+    width: 66.66%;
+    /*height: 36rem;*/
+    height: clamp(10rem, calc(35vw + 10rem), 36rem); /* clamp gibt min-max Werte an;10rem, da eines der Bilder 10 rem von Top ist*/
+    position: relative;
+
+    @media (max-width: $breakpoint-md) {
+        width: 50%;
+        height: clamp(10rem, calc(25vw + 10rem), 36rem);
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        float: none;
+        width: 80%;
+        height: clamp(10rem, calc(40vw + 10rem), 36rem);
+        margin: 0 auto;
+    }
+
+    @media (max-width: $breakpoint-xs) {
+        width: 90%;
+        height: clamp(10rem, calc(45vw + 10rem), 36rem);
+    }
+}
+
+
+/*
+    @param $top: Position from top (in rem)
+    @param $left: Position from left (in %) 
+*/
+@mixin motivation__image-position($top, $left) {
+    top: $top;
+    left: $left;
+
+    $border-plus_padding: $-motivation__image-hover-padding + $-motivation__image-hover-border;
+
+    &hover {
+        top: $top - $border-plus_padding;
+        left: calc(#{$left} - #{$border-plus_padding});
+    }
+}
+
+.motivation__image {
+    position: absolute;
+    width: 50%;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+    box-sizing: content-box;
+    transform: scale(1);
+    filter: grayscale(50%);
+    transition: filter ease-in-out 0.2s, transform ease-in-out 0.2s;
+
+    &--first {
+        width: 75%;
+        z-index: 1;
+
+        @include motivation__image-position(0rem, 25%);
+    }
+
+    &--second {  
+        width: 37%;
+        z-index: 2;
+
+        @include motivation__image-position(10rem, 10%);
+    }
+
+    &--third {
+        width: 42%;
+        z-index: 3;
+
+        @include motivation__image-position(5rem, 40%);
+
+    }
+
+    &:hover {
+        filter: grayscale(0%);
+        transform: scale(1.05);
+        border: $-motivation__image-hover-border solid $color-primary;
+        padding: $-motivation__image-hover-padding;
+
+        z-index: 10;
+    }
+
+}

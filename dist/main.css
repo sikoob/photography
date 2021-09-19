@@ -1,0 +1,395 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  font-family: "Jost", sans-serif;
+}
+
+@font-face {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Jost-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Jost";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Jost-Italic-VariableFont_wght.ttf") format("truetype");
+}
+/*1200px oder schmaler*/
+/*992px oder schmaler*/
+/*768px oder schmaler*/
+/*576px oder schmaler*/
+.container {
+  max-width: 75rem;
+  /*1 rem = 16px --> 1200px; Bezug auf Standardschriftgröße von Browser*/
+  margin: 0px auto;
+  /*mittig zentriert*/
+  padding: 0 2rem;
+}
+.container::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+@media (max-width: 36em) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+.header__container {
+  position: relative;
+}
+
+.header {
+  height: 35rem;
+  min-height: calc(13rem + 32vw);
+  /*errechnet die entsprechenden Parameter, 16rem wird immer aufaddiert für min*/
+  position: relative;
+  /*ermöglicht bottom Ausrichtung für Bilder*/
+  overflow: hidden;
+  /*1200px oder schmaler*/
+}
+@media (max-width: 75em) {
+  .header {
+    height: calc(18rem + 32vw);
+  }
+}
+
+.header__slope {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 10vw;
+  background-image: linear-gradient(-5.71deg, white 49.9%, transparent 50.1%);
+  background-repeat: no-repeat;
+  background-position: center 105%;
+  background-size: 100vw 10vw;
+  z-index: 1;
+}
+
+.header::before,
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -9rem;
+  /*muss gesetzt werden, da die nav relative ist und damit dann verschiebt*/
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% auto;
+}
+@media (max-width: 75em) {
+  .header::before,
+.header::after {
+    bottom: -4rem;
+  }
+}
+@media (max-width: 62em) {
+  .header::before,
+.header::after {
+    bottom: -1rem;
+  }
+}
+
+.header::before {
+  top: 0;
+  background-image: url("../img/pexels-benjamin-suter-3617500.jpg");
+}
+@media (max-width: 36em) {
+  .header::before {
+    background-size: cover;
+  }
+}
+
+.header::after {
+  height: 33vw;
+  /*um Nav klickbar zu machen, vw für Relativität zur Höhe*/
+  background-image: url("../img/pexels-benjamin-suter-3617500-mountains.webp");
+}
+@media (max-width: 36em) {
+  .header::after {
+    display: none;
+  }
+}
+
+.header__heading-container {
+  clear: both;
+  /*Elemnt soll andere Elemente nicht mehr umfließen; float ausschalten */
+  padding-top: 5rem;
+}
+
+.header__heading-main {
+  font-weight: 700;
+  /*padding-top: 5rem;*/
+  color: white;
+  font-size: 7rem;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 92%;
+  text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  animation-name: header__heading-main-font-weight;
+  animation-delay: 0.75s;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+@media (max-width: 62em) {
+  .header__heading-main {
+    font-size: 5rem;
+  }
+}
+@media (max-width: 48em) {
+  .header__heading-main {
+    font-size: 3rem;
+  }
+}
+
+@keyframes header__heading-main-font-weight {
+  0% {
+    opacity: 0;
+    font-weight: 100;
+  }
+  100% {
+    opacity: 1;
+    font-weight: 700;
+  }
+}
+.header__heading-sub {
+  position: relative;
+  /*benötigt für z-index*/
+  margin-top: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 0.25rem;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+@media (max-width: 48em) {
+  .header__heading-sub {
+    font-size: 1rem;
+  }
+}
+
+.navigation__list-item {
+  list-style-type: none;
+  display: block;
+  float: left;
+}
+@media (max-width: 62em) {
+  .navigation__list-item--mobile-hidden {
+    display: none;
+  }
+}
+.navigation__list-item--menu {
+  float: right;
+  font-size: 3rem;
+}
+.navigation__list-item-logo {
+  width: 4rem;
+  height: 4rem;
+  fill: currentColor;
+  /*Farbe vom Elternelement übernommen*/
+}
+
+.navigation__list-item-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0.25rem 0.25rem 0.25rem;
+  /*Padding klickbar, Margin nicht*/
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: block;
+  /*Links standardmäßig inline, kein Margin, deshalb Block hier*/
+  text-shadow: 0 0 0.5rem black;
+}
+.navigation__list-item-link:hover {
+  border-bottom: 0.2rem solid #00e29c;
+}
+.navigation__list-item--menu .navigation__list-item-link {
+  margin-top: 0.4rem;
+  margin-right: 0;
+  padding-right: 0;
+}
+.navigation__list-item--menu .navigation__list-item-link:hover {
+  /*wenn list-item-link Child von Menu ist im Hover, dann Anwendung*/
+  border-bottom: none;
+  color: #c8c8c8;
+}
+.navigation__list-item-link--logo {
+  margin-top: 0.9rem;
+  padding-left: 0;
+  margin-left: 0;
+  /*damit Logo an definierter Container-Grenze liegt*/
+}
+.navigation__list-item-link--logo:hover {
+  border-bottom: none;
+  color: #c8c8c8;
+}
+
+.icon {
+  fill: currentColor;
+  /*Farbe vom Elternelement übernommen*/
+  height: 1em;
+  vertical-align: middle;
+  position: relative;
+  top: -0.075em;
+}
+
+.motivation {
+  margin-top: 2rem;
+}
+
+.motivation__column-text {
+  float: left;
+  width: 33.33%;
+  padding-right: 4.5rem;
+  padding-top: 4rem;
+}
+@media (max-width: 75em) {
+  .motivation__column-text {
+    padding-right: 3rem;
+  }
+}
+@media (max-width: 62em) {
+  .motivation__column-text {
+    padding-right: 0;
+    width: 50%;
+    padding-top: 0;
+  }
+}
+@media (max-width: 48em) {
+  .motivation__column-text {
+    float: none;
+    width: 100%;
+    padding-bottom: 3rem;
+  }
+}
+
+.motivation__text-heading {
+  color: #26464d;
+  font-weight: 500;
+  font-size: 2rem;
+}
+.motivation__text-heading::before {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 0.25rem;
+  background-color: #407682;
+  margin-bottom: 0.5rem;
+}
+
+.motivation__text-paragraph {
+  color: #26464d;
+  margin-top: 0.2rem;
+  font-size: 1.1rem;
+}
+
+.motivation__column-images {
+  float: left;
+  /*auch hier verwendet, da dann der Rest von Bildern umflossen werden*/
+  width: 66.66%;
+  /*height: 36rem;*/
+  height: clamp(10rem, 35vw + 10rem, 36rem);
+  /* clamp gibt min-max Werte an;10rem, da eines der Bilder 10 rem von Top ist*/
+  position: relative;
+}
+@media (max-width: 62em) {
+  .motivation__column-images {
+    width: 50%;
+    height: clamp(10rem, 25vw + 10rem, 36rem);
+  }
+}
+@media (max-width: 48em) {
+  .motivation__column-images {
+    float: none;
+    width: 80%;
+    height: clamp(10rem, 40vw + 10rem, 36rem);
+    margin: 0 auto;
+  }
+}
+@media (max-width: 36em) {
+  .motivation__column-images {
+    width: 90%;
+    height: clamp(10rem, 45vw + 10rem, 36rem);
+  }
+}
+
+/*
+    @param $top: Position from top (in rem)
+    @param $left: Position from left (in %) 
+*/
+.motivation__image {
+  position: absolute;
+  width: 50%;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  box-sizing: content-box;
+  transform: scale(1);
+  filter: grayscale(50%);
+  transition: filter ease-in-out 0.2s, transform ease-in-out 0.2s;
+}
+.motivation__image--first {
+  width: 75%;
+  z-index: 1;
+  top: 0rem;
+  left: 25%;
+}
+.motivation__image--firsthover {
+  top: -0.66rem;
+  left: calc(25% - 0.66rem);
+}
+.motivation__image--second {
+  width: 37%;
+  z-index: 2;
+  top: 10rem;
+  left: 10%;
+}
+.motivation__image--secondhover {
+  top: 9.34rem;
+  left: calc(10% - 0.66rem);
+}
+.motivation__image--third {
+  width: 42%;
+  z-index: 3;
+  top: 5rem;
+  left: 40%;
+}
+.motivation__image--thirdhover {
+  top: 4.34rem;
+  left: calc(40% - 0.66rem);
+}
+.motivation__image:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+  border: 0.33rem solid #00e29c;
+  padding: 0.33rem;
+  z-index: 10;
+}
+
+.tours {
+  background-color: #011820;
+}
+.tours__heading {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding-top: 4rem;
+}
+
+/*# sourceMappingURL=main.css.map */
