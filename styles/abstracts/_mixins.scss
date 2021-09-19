@@ -1,7 +1,23 @@
+@use "./variables" as *;
+
 @mixin clearfix() {
     &::after {
         display: block;
         clear: both;
         content: "";
+    }
+}
+
+@mixin make-container() {
+    max-width: 75rem;
+    /*1 rem = 16px --> 1200px; Bezug auf Standardschriftgröße von Browser*/
+    margin: 0px auto;
+    /*mittig zentriert*/
+    padding: 0 2rem;
+
+    @include clearfix;
+
+    @media (max-width: $breakpoint-xs) {
+        padding: 0 1rem;
     }
 }

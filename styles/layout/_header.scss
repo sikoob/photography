@@ -1,4 +1,4 @@
-@use "../abstracts" as*;
+@use "../abstracts" as *;
 
 .header__container {
     position: relative;
@@ -77,6 +77,8 @@
     clear: both;
     /*Elemnt soll andere Elemente nicht mehr umfließen; float ausschalten */
     padding-top: 5rem;
+
+    @include make-container();
 }
 
 .header__heading-main {

@@ -127,6 +127,21 @@ html {
   clear: both;
   /*Elemnt soll andere Elemente nicht mehr umfließen; float ausschalten */
   padding-top: 5rem;
+  max-width: 75rem;
+  /*1 rem = 16px --> 1200px; Bezug auf Standardschriftgröße von Browser*/
+  margin: 0px auto;
+  /*mittig zentriert*/
+  padding: 0 2rem;
+}
+.header__heading-container::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+@media (max-width: 36em) {
+  .header__heading-container {
+    padding: 0 1rem;
+  }
 }
 
 .header__heading-main {
@@ -251,6 +266,7 @@ html {
 
 .motivation {
   margin-top: 2rem;
+  padding-bottom: 3rem;
 }
 
 .motivation__column-text {
@@ -382,6 +398,27 @@ html {
 
 .tours {
   background-color: #011820;
+  position: relative;
+  padding-bottom: 8.5rem;
+}
+.tours__container {
+  position: relative;
+  z-index: 1;
+  max-width: 75rem;
+  /*1 rem = 16px --> 1200px; Bezug auf Standardschriftgröße von Browser*/
+  margin: 0px auto;
+  /*mittig zentriert*/
+  padding: 0 2rem;
+}
+.tours__container::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+@media (max-width: 36em) {
+  .tours__container {
+    padding: 0 1rem;
+  }
 }
 .tours__heading {
   color: white;
@@ -390,6 +427,149 @@ html {
   letter-spacing: 0.1em;
   text-align: center;
   padding-top: 4rem;
+  padding-bottom: 1rem;
+  font-size: 2rem;
+}
+.tours__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.tours__card {
+  flex: 0 0 14.2rem;
+  position: relative;
+  width: 20%;
+  height: 21rem;
+  margin-top: 3rem;
+  overflow: hidden;
+  box-shadow: 0 0 1rem transparent;
+  transform: scale(1);
+  transition: transform 0.35s ease-in-out, z-index 0.35s linear, box-shadow 0.35s ease-in-out;
+  z-index: 0;
+}
+.tours__card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0.25rem black;
+  transition: transform 0.35s ease-in-out, z-index 0s linear, box-shadow 0.35s ease-in-out;
+  z-index: 1000;
+}
+.tours__card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  filter: brightness(90%);
+}
+.tours__card-icon-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #00e29c;
+  width: 100%;
+  height: 3rem;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.25);
+  transform: translate(calc(-100% + 3rem), 0);
+  transition: transform 0.35s ease-in-out;
+}
+.tours__card:hover .tours__card-icon-background {
+  transform: translate(0, 0);
+}
+.tours__card-icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translate(0, 0);
+  transition: transform 0.35s ease-in-out;
+}
+.tours__card:hover .tours__card-icon-container {
+  transform: translate(calc(50% - 1.5rem), 0);
+}
+.tours__card-icon {
+  width: 3rem;
+  color: white;
+  display: block;
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.5));
+}
+.tours__card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  padding: 3rem 1rem 0 1rem;
+  text-shadow: 0 0 0.125rem black;
+  background-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.25) 20%);
+  transform: translate(0, calc(100% - 7.25rem));
+  transition: transform 0.35s ease-in-out;
+}
+.tours__card:hover .tours__card-content {
+  transform: translate(0, 0);
+}
+.tours__card-heading {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.tours__card-location {
+  display: flex;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+.tours__card-location-icon {
+  font-size: 1.25rem;
+}
+.tours__card-location-text {
+  line-height: 1.9rem;
+  padding-left: 0.15rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.tours__card-desc {
+  font-size: 0.8rem;
+  background-image: linear-gradient(90deg, #00e29c 60%, transparent 60%);
+  background-position-y: top;
+  background-size: 100% 0.125rem;
+  background-repeat: no-repeat;
+  padding: 0.9rem 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.tours::after, .tours::before {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  content: "tame the wild";
+  color: #011820;
+  text-transform: uppercase;
+  font-size: min(calc(100vw / 9), 10rem);
+  font-weight: bold;
+  text-shadow: 0 0 0.05rem white;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@supports (-webkit-text-stroke: 2px rgba(255, 255, 255, 0.2)) or (text-stroke: 2px rgba(255, 255, 255, 0.2)) {
+  .tours::before {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+    text-stroke: 2px rgba(255, 255, 255, 0.2);
+    text-shadow: none;
+  }
+}
+
+@supports (-webkit-text-stroke: 2px transparent) or (text-stroke: 2px transparent) {
+  .tours::after {
+    -webkit-text-stroke: 2px transparent;
+    text-stroke: 2px transparent;
+    text-shadow: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,7 +1,19 @@
 @use "../../abstracts" as *;
 
+$-tours-icon-size: 3rem;
+$-tours-animation-duration: 0.35s;
+
 .tours {
     background-color: $color-secondary-dark;
+    position: relative;
+    padding-bottom: 8.5rem;
+
+    &__container {
+        position: relative;
+        z-index: 1;
+
+        @include make-container();
+    }
 
     &__heading {
         color: white;
@@ -9,6 +21,182 @@
         font-weight: 500;
         letter-spacing: 0.1em;      // em, da es sich auf Schriftgröße des Parent, aber nicht gesamter HTMl bezieht
         text-align: center;  
-        padding-top: 4rem;          //hier kein Margin, da Margin auch in die Sektion darüber verschoben werden kann         
+        padding-top: 4rem;          //hier kein Margin, da Margin auch in die Sektion darüber verschoben werden kann 
+        padding-bottom: 1rem;
+        font-size: 2rem;  
     }
+
+    &__cards {
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-around;      //Space wird dann entsprechend ausgefüllt, wenn Platz über Spacing vorhanden ist bzw. Darstellung mehrzeilig
+    }
+
+    &__card {
+        flex: 0 0 (71rem / 5);          //Karte darf nicht größer oder kleiner werden und soll mindestens 1/5 von 71 (gesamter Cards Bereich) rem haben
+        position: relative;
+        width: 20%;
+        height: 21rem;
+        margin-top: 3rem;
+        overflow: hidden;
+        box-shadow: 0 0 1rem transparent;
+
+        transform: scale(1);
+        transition: transform $-tours-animation-duration ease-in-out, z-index $-tours-animation-duration linear, box-shadow $-tours-animation-duration ease-in-out;
+
+        z-index: 0;
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 0.25rem black;
+            transition: transform $-tours-animation-duration ease-in-out, 
+                z-index 0s linear,                                              //sofortiger z-index bei hover, damit keine Komplikationen mit fließendem Hover erscheinen
+                box-shadow $-tours-animation-duration ease-in-out;        
+
+            z-index: 1000;                  //sehr hoher Wert, damit eine Animation vorgenommen werden kann; z-index läuft nur ganzzahlig
+        }
+    }
+
+    &__card-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        filter: brightness(90%);
+    }
+
+    &__card-icon-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $color-primary;
+        width: 100%;
+        height: 3rem;
+        box-shadow: 0 0 0.25rem rgba(0,0,0,0.25);
+
+        transform: translate(calc(-100% + #{$-tours-icon-size}), 0);
+        transition: transform $-tours-animation-duration ease-in-out;
+
+        .tours__card:hover & {
+            transform: translate(0,0);
+        }
+    }
+
+    &__card-icon-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        transform: translate(0,0);
+        transition: transform $-tours-animation-duration ease-in-out;
+
+        .tours__card:hover & {
+        transform: translate(calc(50% - #{$-tours-icon-size / 2}), 0);                //mittige Positionierung, Hälfte der Icon-Breite wird abgezogen
+        }
+    }
+
+    &__card-icon {
+        width: $-tours-icon-size;
+        color: white;
+        display: block;
+        filter: drop-shadow(0 0 0.5rem rgba(0,0,0,0.5));
+    }
+
+    &__card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        color: white;
+        padding: 3rem 1rem 0 1rem;
+        text-shadow: 0 0 0.125rem black;
+
+        background-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.25) 20%);
+
+        transform: translate(0, calc(100% - 7.25rem));     //zeigt nur die Headline und Location, deren Höhen ausgerechnet werden können. Beschreibung kommt erst bei Hover
+        transition: transform $-tours-animation-duration ease-in-out;
+
+        .tours__card:hover & {
+            transform: translate(0,0);
+        }
+    }
+
+    &__card-heading {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &__card-location {
+        display: flex;
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
+    }
+
+    &__card-location-icon {
+        font-size: 1.25rem;
+    }
+
+    &__card-location-text {
+        line-height: 1.9rem;
+        padding-left: 0.15rem;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &__card-desc {
+        font-size: 0.8rem;
+        background-image: linear-gradient(90deg, $color-primary 60%, transparent 60%);
+        background-position-y: top;
+        background-size: 100% 0.125rem;
+        background-repeat: no-repeat;
+        padding: 0.9rem 0;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+
+@mixin -tours__before-and-after-stroke($color) {
+    @supports (-webkit-text-stroke: 2px #{$color}) or (text-stroke: 2px #{$color}) {        //unterstützt der Browser diese Eigenschaft? Falls ja, führe aus. Falls nein, nutze text-shadow
+        -webkit-text-stroke: 2px #{$color};
+        text-stroke: 2px #{$color};
+        text-shadow: none;
+    }
+}
+
+%tours__before-and-after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    content: "tame the wild";
+    color: $color-secondary-dark;
+    text-transform: uppercase;
+    font-size: min(calc(100vw / 9), 10rem);                                     //minimale Größe berechnete Darstellung, maximale Größe 10rem (160px)
+    font-weight: bold;
+    text-shadow: 0 0 0.05rem white;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tours::before {
+    @extend %tours__before-and-after;
+
+    @include -tours__before-and-after-stroke(rgba(255,255,255,0.2));
+}
+
+.tours::after {                                                                         //als Absicherung, dass Linien komplett gefüllt werden
+    @extend %tours__before-and-after;
+
+    @include -tours__before-and-after-stroke(transparent);
 }
