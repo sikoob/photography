@@ -71,7 +71,7 @@ html {
   left: 0;
   bottom: 0;
   height: 10vw;
-  background-image: linear-gradient(-5.71deg, white 49.9%, transparent 50.1%);
+  background-image: linear-gradient(-5.7391704773deg, white 49.5%, transparent 50.5%);
   background-repeat: no-repeat;
   background-position: center 105%;
   background-size: 100vw 10vw;
@@ -605,14 +605,14 @@ html {
 }
 .story__video {
   position: absolute;
-  width: 100%;
+  min-width: 100%;
   top: 0;
   right: 0;
   left: 0;
 }
 @supports (object-fit: cover) and (object-positon: center center) {
   .story__video {
-    height: auto;
+    min-height: 100%;
     object-fit: cover;
     object-position: center center;
   }
@@ -675,6 +675,92 @@ html {
 .story__book {
   text-align: center;
   padding: 4rem 0 4rem 0;
+}
+
+.container {
+  max-width: 75rem;
+  /*1 rem = 16px --> 1200px; Bezug auf Standardschriftgröße von Browser*/
+  margin: 0px auto;
+  /*mittig zentriert*/
+  padding: 0 2rem;
+}
+.container::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+@media (max-width: 36em) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+.offers {
+  background-color: #eff1ee;
+  min-height: 5rem;
+}
+.offers__container {
+  display: flex;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin-left: -0.66rem;
+  margin-right: -0.66rem;
+}
+.offers__card {
+  flex: 1 0 0px;
+  margin: 0 0.66rem;
+  background-color: white;
+  padding-bottom: 1.5rem;
+  box-shadow: 0.5rem 0.5rem 2rem black;
+  border-left: 0.0625rem solid rgba(0, 0, 0, 0.15);
+  border-right: 0.0625rem solid rgba(0, 0, 0, 0.15);
+  border-top: 0.0625rem solid rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+.offers__card::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: -0.0625rem;
+  right: -0.0625rem;
+  height: 0.75rem;
+  background-color: #00e29c;
+  border-left: 0.0625rem solid #5fcaa9;
+  border-right: 0.0625rem solid #5fcaa9;
+}
+.offers__image-container {
+  position: relative;
+  background-color: #00e29c;
+  margin: -0.0625rem -0.0625rem 0 -0.0625rem;
+}
+.offers__image-container::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  border-top: 0.0625rem solid rgba(0, 0, 0, 0.15);
+  border-right: 0.0625rem solid rgba(0, 0, 0, 0.15);
+  border-left: 0.0625rem solid rgba(0, 0, 0, 0.15);
+}
+.offers__image-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  background-image: linear-gradient(-5.7391704773deg, white 49.5%, transparent 50.5%);
+  background-repeat: no-repeat;
+  background-position: center 100%;
+}
+.offers__image {
+  width: 100%;
+  filter: grayscale(100);
+  mix-blend-mode: multiply;
 }
 
 /*# sourceMappingURL=main.css.map */
