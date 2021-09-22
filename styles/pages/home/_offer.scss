@@ -3,8 +3,10 @@
 @use "sass:color";
 
 $-offers-card-border-width: math.div(1rem, 16);
+$-half-pixel-width: math.div(1rem, 32);
 $-offers-card-border-color: rgba(0,0,0,0.15);
 $-offers-card-margin: 0.66rem;
+$-offers-card-width: math.div(100%, 3);
 
 %offers__content-info-column {
     flex: 1 1 50%;
@@ -24,15 +26,18 @@ $-offers-card-margin: 0.66rem;
 
     &__container {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         padding-top: 4rem;
         padding-bottom: 4rem;
         margin-left: - $-offers-card-margin;
         margin-right: - $-offers-card-margin;
+        margin-top:-($-offers-card-margin * 2);
     }
 
     &__card {
-        flex: 1 0 0px;              //da flex-grow auf 1, werden alle Elemente mit dieser Klasse gleich groß angezeigt
-        margin: 0 $-offers-card-margin;
+        width: calc(#{$-offers-card-width} - #{($-offers-card-margin * 2 + 0.001rem)});        //genaue Breite mit Abzug Margin für Bereich
+        margin: ($-offers-card-margin * 2) $-offers-card-margin 0 $-offers-card-margin;
         background-color: white;
         padding-bottom: 2rem;
         box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.15);
@@ -41,6 +46,16 @@ $-offers-card-margin: 0.66rem;
         border-top: $-offers-card-border-width solid $-offers-card-border-color;
 
         position: relative;
+
+        @media (max-width: $breakpoint-md) {
+            $-width-md: math.div(100%, 2);
+            width: calc(#{$-width-md} - #{($-offers-card-margin * 2 + 0.001rem)}); 
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            $-width-am: math.div(100%, 2);
+            width: calc(100% - #{($-offers-card-margin * 2 + 0.001rem)}); 
+        }
 
         &::after {
             content:"";
@@ -53,6 +68,39 @@ $-offers-card-margin: 0.66rem;
             background-color: $color-primary;
             border-left: $-offers-card-border-width solid color.scale($color-primary, $saturation: -50%,$lightness: 25%);
             border-right: $-offers-card-border-width solid color.scale($color-primary, $saturation: -50%, $lightness: 25%);
+        }
+
+        &-hover {
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -#{$-offers-card-border-width};
+            left: -#{$-offers-card-border-width};
+            right: -#{$-offers-card-border-width};
+            bottom: -#{$-offers-card-border-width};                  //div geht jetzt über gesamte card größe durch 0 0 0 0 
+            background-color: $color-primary;
+            background-image: linear-gradient(90deg, 
+                transparent calc(50% - #{$-half-pixel-width}),
+                white calc(50% - #{$-half-pixel-width}),
+                white calc(50% + #{$-half-pixel-width}),
+                transparent calc(50% + #{$-half-pixel-width})
+            ), linear-gradient(135deg,
+                $color-primary 0%,
+                color.scale($color-primary, $lightness: -20%) 100%
+            );
+            background-repeat: no-repeat, no-repeat;
+            background-position: center top, center center;
+            background-size: 100% calc( 50% - 4rem), 100% 100%;
+            z-index: 2;
+
+            transition: opacity 0.25s ease-in-out;
+
+            .offers__card:hover & {
+                opacity: 100%;
+            }
         }
     }
 
@@ -84,6 +132,10 @@ $-offers-card-margin: 0.66rem;
             background-image: linear-gradient(-#{$slope-incline}, white 49.5%, transparent 50.5%);
             background-repeat: no-repeat;
             background-position: center 100%;
+
+            @media (max-width: $breakpoint-sm) {
+                height: 5rem;
+            }
         }
     }
 
@@ -101,6 +153,9 @@ $-offers-card-margin: 0.66rem;
             color: $color-secondary;
             font-size: 1.75rem;
             font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         &-subheading {
@@ -109,8 +164,6 @@ $-offers-card-margin: 0.66rem;
         }
 
         &-info {
-            $-half-pixel-width: math.div(1rem, 32);
-
             margin-top: 1rem;
             border-top: 1px solid rgba(0,0,0,0.15);
             border-bottom: 1px solid rgba(0,0,0,0.15); 

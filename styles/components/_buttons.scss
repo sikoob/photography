@@ -26,6 +26,23 @@
         }
     }
 
+    &--secondary {
+        background-color: $color-secondary;
+        color: white;
+        border: 0.125rem solid $color-secondary; 
+        
+        &:hover {
+            color: white;
+            background-color: $color-secondary-dark;
+            border: 0.125rem solid $color-secondary-dark; 
+        }
+    }
+
+    &--slim {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     &--background-blur {
         -webkit-backdrop-filter: blur(3rem);
         backdrop-filter: blur(3rem);

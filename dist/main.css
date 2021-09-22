@@ -286,6 +286,20 @@ html {
 .button--white:hover {
   color: #e6e6e6;
 }
+.button--secondary {
+  background-color: #26464d;
+  color: white;
+  border: 0.125rem solid #26464d;
+}
+.button--secondary:hover {
+  color: white;
+  background-color: #011820;
+  border: 0.125rem solid #011820;
+}
+.button--slim {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .button--background-blur {
   -webkit-backdrop-filter: blur(3rem);
   backdrop-filter: blur(3rem);
@@ -605,14 +619,15 @@ html {
 }
 .story__video {
   position: absolute;
-  min-width: 100%;
+  width: 100%;
   top: 0;
   right: 0;
   left: 0;
+  bottom: 0;
 }
 @supports (object-fit: cover) and (object-positon: center center) {
   .story__video {
-    min-height: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center center;
   }
@@ -709,14 +724,17 @@ html {
 }
 .offers__container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding-top: 4rem;
   padding-bottom: 4rem;
   margin-left: -0.66rem;
   margin-right: -0.66rem;
+  margin-top: -1.32rem;
 }
 .offers__card {
-  flex: 1 0 0px;
-  margin: 0 0.66rem;
+  width: calc(33.3333333333% - 1.321rem);
+  margin: 1.32rem 0.66rem 0 0.66rem;
   background-color: white;
   padding-bottom: 2rem;
   box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.15);
@@ -724,6 +742,16 @@ html {
   border-right: 0.0625rem solid rgba(0, 0, 0, 0.15);
   border-top: 0.0625rem solid rgba(0, 0, 0, 0.15);
   position: relative;
+}
+@media (max-width: 62em) {
+  .offers__card {
+    width: calc(50% - 1.321rem);
+  }
+}
+@media (max-width: 48em) {
+  .offers__card {
+    width: calc(100% - 1.321rem);
+  }
 }
 .offers__card::after {
   content: "";
@@ -736,6 +764,28 @@ html {
   background-color: #00e29c;
   border-left: 0.0625rem solid #5fcaa9;
   border-right: 0.0625rem solid #5fcaa9;
+}
+.offers__card-hover {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -0.0625rem;
+  left: -0.0625rem;
+  right: -0.0625rem;
+  bottom: -0.0625rem;
+  background-color: #00e29c;
+  background-image: linear-gradient(90deg, transparent calc(50% - 0.03125rem), white calc(50% - 0.03125rem), white calc(50% + 0.03125rem), transparent calc(50% + 0.03125rem)), linear-gradient(135deg, #00e29c 0%, #00b57d 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center top, center center;
+  background-size: 100% calc(50% - 4rem), 100% 100%;
+  z-index: 2;
+  transition: opacity 0.25s ease-in-out;
+}
+.offers__card:hover .offers__card-hover {
+  opacity: 100%;
 }
 .offers__image-container {
   position: relative;
@@ -765,6 +815,11 @@ html {
   background-repeat: no-repeat;
   background-position: center 100%;
 }
+@media (max-width: 48em) {
+  .offers__image-container::after {
+    height: 5rem;
+  }
+}
 .offers__image {
   width: 100%;
   filter: grayscale(100);
@@ -778,6 +833,9 @@ html {
   color: #26464d;
   font-size: 1.75rem;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .offers__content-subheading {
   color: #00e29c;
