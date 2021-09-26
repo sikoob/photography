@@ -16,6 +16,37 @@ $-offers-card-width: math.div(100%, 3);
     padding-bottom: 1rem;
 }
 
+%offers__card-container--3d-effect {
+    perspective: 50rem;
+
+    .offers__card {
+        transition: transform 0.1s ease-in-out;
+        transform: rotateX(calc(calc(var(--mouse-y, 0.5) - 0.5) * -20deg)) rotateY(calc(calc(var(--mouse-x, 0.5) - 0.5) * 20deg));
+        transform-style: preserve-3d;
+    }
+    
+    &:hover .offers__card{
+        transition: transform 0.1s linear;
+    }
+}
+
+@mixin backface-hidden {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;    
+}
+
+@mixin offers__card-hover-bg($alpha-dt: 0%) {
+    background-image: linear-gradient(90deg, 
+                transparent calc(50% - #{$-half-pixel-width}),
+                white calc(50% - #{$-half-pixel-width}),
+                white calc(50% + #{$-half-pixel-width}),
+                transparent calc(50% + #{$-half-pixel-width})
+            ), linear-gradient(135deg,
+                color.scale($color-primary, $alpha: $alpha-dt) 0%,
+                color.scale($color-primary, $lightness: -20%, $alpha: $alpha-dt) 100%
+            );
+}
+
 .container {
     @include make-container();
 }
@@ -36,38 +67,96 @@ $-offers-card-width: math.div(100%, 3);
     }
 
     &__card {
-        width: calc(#{$-offers-card-width} - #{($-offers-card-margin * 2 + 0.001rem)});        //genaue Breite mit Abzug Margin für Bereich
-        margin: ($-offers-card-margin * 2) $-offers-card-margin 0 $-offers-card-margin;
-        background-color: white;
-        padding-bottom: 2rem;
         box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.15);
-        border-left: $-offers-card-border-width solid $-offers-card-border-color;
-        border-right: $-offers-card-border-width solid $-offers-card-border-color;
-        border-top: $-offers-card-border-width solid $-offers-card-border-color;
-
         position: relative;
 
-        @media (max-width: $breakpoint-md) {
-            $-width-md: math.div(100%, 2);
-            width: calc(#{$-width-md} - #{($-offers-card-margin * 2 + 0.001rem)}); 
+        &-container {               //Auslagerung in Container von Breite und Margin für 3D Effekte
+            width: calc(#{$-offers-card-width} - #{($-offers-card-margin * 2 + 0.001rem)});        //genaue Breite mit Abzug Margin für Bereich
+            margin: ($-offers-card-margin * 2) $-offers-card-margin 0 $-offers-card-margin;
+
+            @media (max-width: $breakpoint-md) {
+                $-width-md: math.div(100%, 2);
+                width: calc(#{$-width-md} - #{($-offers-card-margin * 2 + 0.001rem)}); 
+            }
+    
+            @media (max-width: $breakpoint-sm) {
+                $-width-am: math.div(100%, 2);
+                width: calc(100% - #{($-offers-card-margin * 2 + 0.001rem)}); 
+            }
+
+            &--flip {
+                perspective: 50rem;
+
+                .offers__card {
+                    transition: transform 1s ease-in-out;
+                    transform-style: preserve-3d;
+                }
+
+                &:hover .offers__card {
+                    transform: rotateY(180deg);
+                }
+
+                .offers__card-hover {
+                    transform: rotateY(180deg);
+                    opacity: 1;
+                    @include backface-hidden();
+                }
+
+                .offers__card-primary {
+                    transform: rotateY(0deg);
+                    transform-style: preserve-3d;
+                    @include backface-hidden();
+                }
+            }
+
+            &--3d{
+                @extend %offers__card-container--3d-effect;
+
+                .offers__card-hover {
+                    display: none;
+                }
+            }
+
+            &--3d-hover {
+                @extend %offers__card-container--3d-effect;
+
+                .offers__card-hover {
+                    transform: translateZ(1rem);
+                    background-color: transparent;
+                    @include offers__card-hover-bg(-25%);
+                }
+
+                .offers__card-primary {
+                    transform-style: preserve-3d;
+                    filter: blur(0rem);
+                    transition: filter 0.2s ease-in-out;
+                }
+
+                &:hover .offers__card-primary {
+                    filter: blur(0.5rem);
+                }
+            }
         }
 
-        @media (max-width: $breakpoint-sm) {
-            $-width-am: math.div(100%, 2);
-            width: calc(100% - #{($-offers-card-margin * 2 + 0.001rem)}); 
-        }
+        &-primary {
+            background-color: white;
+            padding-bottom: 2rem;
+            border-left: $-offers-card-border-width solid $-offers-card-border-color;
+            border-right: $-offers-card-border-width solid $-offers-card-border-color;
+            border-top: $-offers-card-border-width solid $-offers-card-border-color;
 
-        &::after {
-            content:"";
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: - $-offers-card-border-width;
-            right: - $-offers-card-border-width;
-            height: 0.75rem;
-            background-color: $color-primary;
-            border-left: $-offers-card-border-width solid color.scale($color-primary, $saturation: -50%,$lightness: 25%);
-            border-right: $-offers-card-border-width solid color.scale($color-primary, $saturation: -50%, $lightness: 25%);
+            &::after {
+                content:"";
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: - $-offers-card-border-width;
+                right: - $-offers-card-border-width;
+                height: 0.75rem;
+                background-color: $color-primary;
+                border-left: $-offers-card-border-width solid color.scale($color-primary, $saturation: -50%,$lightness: 25%);
+                border-right: $-offers-card-border-width solid color.scale($color-primary, $saturation: -50%, $lightness: 25%);
+            }
         }
 
         &-hover {
@@ -82,15 +171,7 @@ $-offers-card-width: math.div(100%, 3);
             right: -#{$-offers-card-border-width};
             bottom: -#{$-offers-card-border-width};                  //div geht jetzt über gesamte card größe durch 0 0 0 0 
             background-color: $color-primary;
-            background-image: linear-gradient(90deg, 
-                transparent calc(50% - #{$-half-pixel-width}),
-                white calc(50% - #{$-half-pixel-width}),
-                white calc(50% + #{$-half-pixel-width}),
-                transparent calc(50% + #{$-half-pixel-width})
-            ), linear-gradient(135deg,
-                $color-primary 0%,
-                color.scale($color-primary, $lightness: -20%) 100%
-            );
+            @include offers__card-hover-bg();
             background-repeat: no-repeat, no-repeat;
             background-position: center top, center center;
             background-size: 100% calc( 50% - 4rem), 100% 100%;
