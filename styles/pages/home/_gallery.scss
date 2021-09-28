@@ -2,6 +2,7 @@
 @use "sass:math";
 @use "sass:color";
 
+$-animation-duration: 0.2s;
 $-column-size: math.div(71rem, 5);
 
 .gallery {
@@ -48,6 +49,46 @@ $-column-size: math.div(71rem, 5);
 
     &-item {
         display: block;
+
+        position: relative;
+        filter: contrast(1.1) brightness(1.15) saturate(1.1);
+        transform: scale(1);
+        z-index: 0;
+        box-shadow: 0 0 1rem rgba(0,0,0,0);
+        transition: filter $-animation-duration ease-in-out, 
+                    transform $-animation-duration ease-in-out, 
+                    z-index $-animation-duration linear,
+                    box-shadow $-animation-duration ease-in-out;
+
+        &::before {
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+            background: radial-gradient(circle closest-corner, transparent 0, rgba(175,105,24,0.4) 100%);
+            content: "";
+            mix-blend-mode: multiply;
+
+            transition: opacity 0.1s ease-in-out;
+        }
+
+        &:hover {
+            box-shadow: 0 0 1rem rgba(0,0,0,1);
+            transform: scale(1.1);
+            z-index: 1000;
+            filter: contrast(1) brightness(1) saturate(1);
+            transition: filter $-animation-duration ease-in-out,
+                        transform $-animation-duration ease-in-out, 
+                        z-index $-animation-duration linear,
+                        box-shadow $-animation-duration ease-in-out;
+
+            &::before {
+                opacity: 0;
+            }
+        }
 
         &--first {
             grid-column-start: 1;
