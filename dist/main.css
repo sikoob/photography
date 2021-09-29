@@ -255,6 +255,81 @@ html {
   color: #c8c8c8;
 }
 
+.footer {
+  background-color: #407682;
+  padding: 3rem 0;
+}
+.footer__container {
+  max-width: 75rem;
+  /*1 rem = 16px --> 1200px; Bezug auf Standardschriftgröße von Browser*/
+  margin: 0px auto;
+  /*mittig zentriert*/
+  padding: 0 2rem;
+  display: flex;
+}
+.footer__container::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+@media (max-width: 36em) {
+  .footer__container {
+    padding: 0 1rem;
+  }
+}
+.footer__text-column {
+  flex: 0 0 50%;
+}
+.footer__column {
+  flex: 0 0 50%;
+}
+.footer__heading {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.1em;
+}
+.footer__paragraph {
+  color: #00e29c;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.footer__contact-item {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+.footer__contact-item-icon {
+  position: relative;
+  font-size: 2.5rem;
+  color: #407682;
+  background-color: #00e29c;
+  height: 4rem;
+  width: 4rem;
+  text-align: center;
+  border-radius: 1000rem;
+  z-index: 2;
+}
+.footer__contact-item-icon--phone {
+  line-height: 3.9rem;
+}
+.footer__contact-item-link {
+  position: absolute;
+  top: 0.25rem;
+  left: 2.25rem;
+  width: 16rem;
+  text-align: center;
+  white-space: nowrap;
+  color: white;
+  background-color: #60a2b1;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  z-index: 1;
+}
+
 .icon {
   fill: currentColor;
   /*Farbe vom Elternelement übernommen*/
