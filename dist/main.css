@@ -1098,14 +1098,144 @@ html {
   padding-bottom: 3rem;
 }
 .about__text {
+  padding-top: 2.5rem;
   color: white;
 }
-.about__image {
-  width: 30rem;
-  height: 30rem;
+.about__text::before {
+  content: "";
+  display: inline-block;
+  height: 0.25rem;
+  width: 4rem;
+  background-color: #00e29c;
+}
+@media (max-width: 75em) {
+  .about__text {
+    padding-top: 0.5rem;
+  }
+}
+.about__heading {
+  color: #00e29c;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.about__paragraph {
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.about__quote {
+  font-style: italic;
+}
+.about__quote::before {
+  content: '"';
+}
+.about__quote::after {
+  content: '"';
+}
+.about__slideshow {
+  position: relative;
+}
+.about__img {
+  width: 32rem;
+  height: 32rem;
+  margin-right: 2rem;
   object-fit: cover;
   border-radius: 1000rem;
   float: left;
+  shape-outside: circle(50% at 50% 50%);
+}
+@media (max-width: 75em) {
+  .about__img {
+    width: 28.8rem;
+    height: 28.8rem;
+  }
+}
+@media (max-width: 62em) {
+  .about__img {
+    width: 25.6rem;
+    height: 25.6rem;
+  }
+}
+@media (max-width: 48em) {
+  .about__img {
+    width: 12.8rem;
+    height: 12.8rem;
+  }
+}
+@media (max-width: 36em) {
+  .about__img {
+    width: 9.6rem;
+    height: 9.6rem;
+  }
+}
+.about__img--slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.about__img--slideshow-3 {
+  animation-name: animation-about__img--slideshow-3;
+  animation-timing-function: ease-in-out;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+.about__img--slideshow-2 {
+  animation-name: animation-about__img--slideshow-2;
+  animation-timing-function: ease-in-out;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+.about__img--slideshow-1 {
+  animation-name: animation-about__img--slideshow-1;
+  animation-timing-function: ease-in-out;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animation-about__img--slideshow-3 {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  95% {
+    opacity: 0;
+  }
+}
+@keyframes animation-about__img--slideshow-2 {
+  0% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes animation-about__img--slideshow-1 {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
