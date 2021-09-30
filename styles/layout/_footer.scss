@@ -4,27 +4,45 @@
 
 .footer {
     background-color: $color-secondary-light;
-    padding: 3rem 0;
+    padding: 3rem 0 0.5rem 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &__container {
-    @include make-container();
     display: flex;
+    justify-content: center;
+    border-bottom: 0.175rem solid rgba(255,255,255,0.25);
+    padding-bottom: 2rem;
+
+    @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+    }
     }
 
     &__text-column {
-        flex: 0 0 50%;
-    }
+        flex: 0 0 auto;
+        margin-right: 5rem;
+        text-shadow: 0 0 1rem rgba(0,0,0,0.5);
 
-    &__column {
-        flex: 0 0 50%;
+        @media (max-width: $breakpoint-sm) {
+            order: 2;
+            margin-right: 0rem;
+        }
     }
 
     &__heading {
         color: white;
         text-transform: uppercase;
         font-weight: 700;
-        font-size: 3rem; 
+        font-size: 3.5rem; 
         line-height: 1.1em;
+        max-width: 24rem;
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: 1.8rem;
+        }
     }
 
     &__paragraph {
@@ -68,7 +86,99 @@
             border-top-right-radius: 1rem;
             border-bottom-right-radius: 1rem;
             z-index: 1;
+            overflow: hidden;
 
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: calc(-100% - 5rem);
+                bottom: 0;
+                width: calc(100% + 5rem);
+                background-image: linear-gradient(-45deg, transparent 2.82rem, $color-secondary 2.82rem);
+                background-repeat: no-repeat;
+                background-position: right center;
+                z-index: -1;
+
+                transition: transform 0.5s ease-in-out;
+            }
+
+            &:hover {
+                &::after {
+                    transform: translate(100%,0);
+                }
+            }
+        }
+    }
+
+    &__logo-column {
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: $breakpoint-sm) {
+            order: 1;
+            justify-content: start;
+            padding-bottom: 3rem;
+        }
+    }
+
+    &__logo-container {
+        display: flex;      //doppelte Flexbox für Positionierung für Logo Container und Logo selbst
+        justify-content: center;
+        align-items: center;
+        font-size: 22rem;
+        padding: 0.05em;
+        color: white;
+
+        background-image: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
+        border-radius: 1000rem;
+
+        @media (max-width: $breakpoint-md) {
+            font-size: 12rem;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: 6rem;
+        }
+    }
+
+    &__logo-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.1em;         //da abhängig von Schriftgröße
+        border: 0.025em solid white;
+        border-radius: 1000rem;
+    }
+}
+
+.footer__footer {
+    
+    &-list {
+        display: flex;
+        list-style-type: none;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &-link {
+        display: inline-block;
+        color: rgba(255,255,255,0.5);
+        text-decoration: none;
+        padding: 0.5rem 1.5rem;
+        transition: color 0.25s ease-in-out;
+        white-space: nowrap;
+
+        &:hover {
+            color: rgba(255,255,255,0.75);
+        }
+
+        @media (max-width: $breakpoint-xs) {
+            padding: 0.5rem 0.5rem;
         }
     }
 }
+
