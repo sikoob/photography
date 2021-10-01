@@ -329,7 +329,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, id dolores eaque placeat deleniti mollitia harum nulla, reiciendis deserunt, similique distinctio provident accusantium reprehenderit doloremque laboriosam ullam praesentium sit quis?</p>
             </div>
             <div class="story__book">
-                <a class="button button--white button--background-blur" href="#">Book now</a>
+                <a class="button button--white button--background-blur" href="#booking-modal">Book now</a>
             </div>
         </div>
 
@@ -378,7 +378,7 @@
                             </div>
                         </div>
                         <div class="offers__card-hover">
-                            <a href="#" class="button button--secondary button--slim">Jetzt buchen!</a>
+                            <a href="#booking-modal" class="button button--secondary button--slim">Jetzt buchen!</a>
                         </div>
                     </div>
                 </div>
@@ -423,7 +423,7 @@
                             </div>
                         </div>
                         <div class="offers__card-hover">
-                            <a href="#" class="button button--secondary button--slim">Jetzt buchen!</a>
+                            <a href="#booking-modal" class="button button--secondary button--slim">Jetzt buchen!</a>
                         </div>
                     </div>
                 </div>
@@ -467,7 +467,7 @@
                             </div>
                         </div>
                         <div class="offers__card-hover">
-                            <a href="#" class="button button--secondary button--slim">Jetzt buchen!</a>
+                            <a href="#booking-modal" class="button button--secondary button--slim">Jetzt buchen!</a>
                         </div>
                     </div>
                 </div>
@@ -635,6 +635,24 @@
                 </li>
             </ul>
         </footer>
+    </section>
+
+    <section class="booking-modal" id="booking-modal">
+        <div class="booking-modal__content">
+            <a class="booking-modal__close" href="#">x</a>
+            <h3 class="booking-modal__heading">Jetzt Buchungsanfrage stellen!</h3>
+        
+            <form class="form" action="#">
+                <div class="form__group">
+                    <input type="text" class="form__input" id="booking-modal-name"/>
+                    <label class="form__label" for="booking-modal-name">Name</label>
+                </div>
+                <div class="form__group">
+                    <input type="text" class="form__input" id="booking-modal-mail"/>
+                    <label class="form__label" for="booking-modal-mail">E-Mail</label>
+                </div>
+            </form>
+        </div> 
     </section>
 
     <!-- Bug Fix für Chrome, damit Animationen nicht beim Laden ausgeführt werden-->
