@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <input type="checkbox" class="sidenav__opened" id="sidenav__opened" autocomplete="off" />
     <header class="header">
         <div class="header__container">
             <nav class="nav">
@@ -43,7 +44,7 @@
                     <li class="navigation__list-item navigation__list-item--mobile-hidden"><a href="#" class="navigation__list-item-link">What to do</a></li>
                     <li class="navigation__list-item navigation__list-item--mobile-hidden"><a href="#" class="navigation__list-item-link">Plan your photos</a></li>
                     <li class="navigation__list-item navigation__list-item--menu">
-                        <a href="#" class="navigation__list-item-link">
+                        <label href="#" class="navigation__list-item-link" for="sidenav__opened">
                             <svg class="icon" viewBox="0 0 512 512">   
                                 <g>
                                     <path d="M358.06,193.61H153.94c-3.83,0-6.93-3.1-6.93-6.93s3.1-6.93,6.93-6.93h204.13c3.83,0,6.93,3.1,6.93,6.93
@@ -57,7 +58,7 @@
                                     S143.02,460.9,256,460.9S460.9,368.98,460.9,256S368.98,51.1,256,51.1z"/>
                                 </g>
                             </svg>
-                        </a>
+                        </label>
                     </li>
                 </ul>
             </nav>
@@ -670,6 +671,21 @@
                 </div>
             </form>
         </div> 
+    </section>
+    <section class="sidenav">
+        <label class="sidenav__background" for="sidenav__opened"></label>
+        <div class="sidenav__container">
+            <label class="sidenav__close" for="sidenav__opened">x</label>
+            <nav>
+                <ul class="sidenav__nav">
+                    <li><a class="sidenav__nav-link" href="#">Startseite</a></li>
+                    <li><a class="sidenav__nav-link" href="#">Datenschutzerklärung</a></li>
+                    <li><a class="sidenav__nav-link" href="#">Über uns</a></li>
+                    <li><a class="sidenav__nav-link" href="#">Impressum</a></li>
+                    <li><a class="sidenav__nav-link" href="#">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
     </section>
 
     <!-- Bug Fix für Chrome, damit Animationen nicht beim Laden ausgeführt werden-->

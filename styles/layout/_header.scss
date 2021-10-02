@@ -17,6 +17,10 @@
     @media (max-width: $breakpoint-l) {
         height: calc(18rem + 32vw);
     }
+
+    &__container {
+        @include make-container();
+    }
 }
 
 .header__slope {
