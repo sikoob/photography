@@ -71,6 +71,13 @@ $-booking-modal-height: 23rem;
         animation-iteration-count: 1;
         animation-timing-function: ease-in-out;
         animation-fill-mode: backwards;     //damit Eigenschaft bvon 0% schon direkt angezeigt wird
+
+        @media (max-width: $breakpoint-xs) {
+            padding-left: 1rem;
+            background-image: none;
+            background-color: $modal-content-bg;
+            height: 27rem;
+        }
     }
 
     &__close {

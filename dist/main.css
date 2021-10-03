@@ -1,4 +1,9 @@
 @charset "UTF-8";
+/*1200px oder schmaler*/
+/*992px oder schmaler*/
+/*768px oder schmaler*/
+/*576px oder schmaler*/
+/*400px oder schmaler*/
 * {
   margin: 0;
   padding: 0;
@@ -9,10 +14,40 @@ html {
   font-size: 100%;
   font-family: "Jost", sans-serif;
 }
+@media (min-width: 100em) {
+  html {
+    font-size: 133%;
+  }
+}
+@media (min-width: 133em) {
+  html {
+    font-size: 166%;
+  }
+}
+@media (min-width: 166em) {
+  html {
+    font-size: 200%;
+  }
+}
+@media (max-width: 25em) {
+  html {
+    font-size: 75%;
+  }
+}
 
 input,
 select {
   font-family: inherit;
+}
+
+::selection {
+  color: white;
+  background-color: rgba(38, 70, 77, 0.8);
+}
+
+::-moz-selection {
+  color: white;
+  background-color: rgba(38, 70, 77, 0.8);
 }
 
 @font-face {
@@ -29,10 +64,6 @@ select {
   font-display: swap;
   src: url("../fonts/Jost-Italic-VariableFont_wght.ttf") format("truetype");
 }
-/*1200px oder schmaler*/
-/*992px oder schmaler*/
-/*768px oder schmaler*/
-/*576px oder schmaler*/
 .container {
   max-width: 75rem;
   /*1 rem = 16px --> 1200px; Bezug auf Standardschriftgröße von Browser*/
@@ -867,7 +898,7 @@ select {
   justify-content: space-around;
 }
 .tours__card {
-  flex: 0 0 14.2rem;
+  flex: 0 0 20%;
   position: relative;
   width: 20%;
   height: 21rem;
@@ -877,6 +908,11 @@ select {
   transform: scale(1);
   transition: transform 0.35s ease-in-out, z-index 0.35s linear, box-shadow 0.35s ease-in-out;
   z-index: 0;
+}
+@media (max-width: 75em) {
+  .tours__card {
+    flex: 0 0 14.2rem;
+  }
 }
 .tours__card:hover {
   transform: scale(1.1);
@@ -1007,30 +1043,34 @@ select {
   position: relative;
   overflow: hidden;
 }
+
 .story__video {
   position: absolute;
-  width: 100%;
-  top: 0;
-  right: 0;
+  z-index: 0;
   left: 0;
+  right: 0;
+  top: 0;
   bottom: 0;
+  width: 100%;
 }
-@supports (object-fit: cover) and (object-positon: center center) {
+@supports (object-fit: cover) and (object-position: center center) {
   .story__video {
     height: 100%;
     object-fit: cover;
     object-position: center center;
   }
 }
-.story__video-cover {
+
+.story__video-colorize {
   position: absolute;
   z-index: 1;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(38, 70, 77, 0.7);
+  background-color: rgba(38, 70, 77, 0.5);
 }
+
 .story__container {
   position: relative;
   z-index: 2;
@@ -1050,6 +1090,7 @@ select {
     padding: 0 1rem;
   }
 }
+
 .story__heading {
   color: white;
   text-transform: uppercase;
@@ -1061,14 +1102,15 @@ select {
   font-size: 2rem;
   text-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.5);
 }
+
 .story__desc {
   max-width: 40rem;
   margin: 0 auto;
   color: white;
+  text-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.5);
   column-count: 2;
   column-gap: 4rem;
   column-rule: 0.125rem solid rgba(255, 255, 255, 0.5);
-  text-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.5);
   text-align: justify;
 }
 @media (max-width: 48em) {
@@ -1077,6 +1119,7 @@ select {
     text-align: left;
   }
 }
+
 .story__book {
   text-align: center;
   padding: 4rem 0 4rem 0;
@@ -1681,6 +1724,14 @@ select {
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
   animation-fill-mode: backwards;
+}
+@media (max-width: 36em) {
+  .booking-modal__content {
+    padding-left: 1rem;
+    background-image: none;
+    background-color: rgba(64, 118, 130, 0.85);
+    height: 27rem;
+  }
 }
 .booking-modal__close {
   display: block;

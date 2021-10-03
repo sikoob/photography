@@ -34,7 +34,11 @@ $-tours-animation-duration: 0.35s;
     }
 
     &__card {
-        flex: 0 0 math.div(71rem, 5);          //Karte darf nicht größer oder kleiner werden und soll mindestens 1/5 von 71 (gesamter Cards Bereich) rem haben
+        flex: 0 0 20%;          //Karte darf nicht größer oder kleiner werden und soll mindestens 1/5 von 71 (gesamter Cards Bereich) rem haben bzw 20% des Parent-Elements, Bug-Fix wegen Rundungsfehler
+        @media (max-width: $breakpoint-l) {
+            flex: 0 0 math.div(71rem, 5);
+        }
+
         position: relative;
         width: 20%;
         height: 21rem;
