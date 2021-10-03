@@ -104,6 +104,7 @@ $-tours-animation-duration: 0.35s;
 
     &__card-icon {
         width: $-tours-icon-size;
+        height: $-tours-icon-size;
         color: white;
         display: block;
         filter: drop-shadow(0 0 0.5rem rgba(0,0,0,0.5));

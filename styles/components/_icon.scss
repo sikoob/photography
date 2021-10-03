@@ -2,6 +2,7 @@
     fill: currentColor;
     /*Farbe vom Elternelement übernommen*/
     height: 1em;
+    width: 1em;     //damit man keine Viewbox mehr direkt festlegen muss auf das SVG
     vertical-align: middle;
 
     &:not(.icon--no-position) {
