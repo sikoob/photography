@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.setup__video {
+    background-image: url(./assets/background_image.jpg);
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    
+    width: 100%;
+}
+
+.setup__container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.15);
+
+}
+
+@supports (object-fit: cover) and (object-position: center center) {
+    .setup__video {
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    }
+}
