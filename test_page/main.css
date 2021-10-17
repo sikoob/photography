@@ -61,11 +61,12 @@
     font-size: 1.4rem;
     text-align: center;
     text-shadow: 0 0 0.05rem black;
+    margin: 0.5rem 1rem;
 }
 
 .setup__contact-mail {
     position: relative;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     color: grey;
     height: 4rem;
     width: 4rem;
@@ -86,15 +87,20 @@
     text-shadow: 0 0 0.05rem black;
 }
 
+.setup__contact-mail-link:hover{
+    text-decoration: underline;
+    color: rgb(77, 77, 77);
+}
+
 .setup__contact-linkedin {
     position: relative;
-    font-size: 1.4rem;
+    font-size: 0.8rem;
     color: grey;
     height: 4rem;
     width: 6rem;
     text-align: center;
-    margin-right: 20rem;
-    margin-top: 2.6rem;
+    margin-right: 16rem;
+    margin-top: 2.3rem;
     float: right;
 }
 
@@ -104,23 +110,172 @@
     color: black;
     font-size: 1.2rem;
     width: 7rem;
-    margin-top: 0.35rem;
+    margin-top: 0.8rem;
     text-shadow: 0 0 0.05rem black;
+    margin-left: -0.5rem;
 }
 
-.setup__icon {
-    fill: currentColor; /*Farbe vom Elternelement übernommen*/
-    height: 3em;
-    width: 3em;     /*damit man keine Viewbox mehr direkt festlegen muss auf das SVG*/
-    vertical-align: middle;
+.setup__contact-linkedin-link:hover{
+    text-decoration: underline;
+    color: rgb(77, 77, 77);
 }
-
-
 
 @supports (object-fit: cover) and (object-position: center center) {
     .setup__video {
     height: 100%;
     object-fit: cover;
     object-position: center center;
+    }
+}
+
+@media (max-width: 62em) {
+    .setup__box {
+        height: 15rem;
+        width: 45rem;
+    }
+
+    .setup__message-heading {
+        font-size: 1.7rem;
+    }
+
+    .setup__message-paragraph {
+        font-size: 1.2rem;
+    }
+
+    .setup__contact-mail {
+        font-size: 0.8rem;
+        margin-left: 4rem;
+        margin-top: 1.6rem;
+    }
+
+    .setup__contact-mail-link {
+        font-size: 1.1rem;
+        margin-top: 0.6rem;
+    }
+
+    .setup__contact-linkedin {
+        font-size: 1rem;
+        margin-right: 16rem;
+        margin-top: 2.15rem;
+    }
+
+    .setup__contact-linkedin-link {
+        font-size: 1.1rem;
+        margin-top: -0.025rem;
+    }
+
+}
+
+@media (max-width: 48em) {
+    .setup__box {
+        height: 13rem;
+        width: 37rem;
+    }
+
+    .setup__message-heading {
+        font-size: 1.5rem;
+    }
+
+    .setup__message-paragraph {
+        font-size: 1rem;
+    }
+
+    .setup__contact-mail {
+        font-size: 0.7rem;
+        margin-left: 2rem;
+        margin-top: 1.6rem;
+    }
+
+    .setup__contact-mail-link {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .setup__contact-linkedin {
+        font-size: 0.9rem;
+        margin-right: 12rem;
+        margin-top: 2.15rem;
+    }
+
+    .setup__contact-linkedin-link {
+        font-size: 1rem;
+        margin-top: -0.02rem;
+    }
+}
+
+@media (max-width: 36em) {
+    .setup__box {
+        height: 13rem;
+        width: 32rem;
+    }
+
+    .setup__message-heading {
+        font-size: 1.3rem;
+    }
+
+    .setup__message-paragraph {
+        font-size: 0.9rem;
+    }
+
+    .setup__contact-mail {
+        font-size: 0.7rem;
+        margin-left: 2rem;
+        margin-top: 1.6rem;
+    }
+
+    .setup__contact-mail-link {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .setup__contact-linkedin {
+        font-size: 0.9rem;
+        margin-right: 8rem;
+        margin-top: 2.15rem;
+    }
+
+    .setup__contact-linkedin-link {
+        font-size: 1rem;
+        margin-top: -0.03rem;
+    }
+}
+
+@media (max-width: 25em) {
+    .setup__box {
+        height: 13rem;
+        width: 23rem;
+    }
+
+    .setup__message-heading {
+        font-size: 1.3rem;
+    }
+
+    .setup__message-paragraph {
+        font-size: 0.9rem;
+    }
+
+    .setup__contact-mail {
+        font-size: 0.7rem;
+        margin-left: 1rem;
+        margin-top: 1.6rem;
+    }
+
+    .setup__contact-mail-link {
+        font-size: 0.8rem;
+        margin-top: 0.6rem;
+        margin-left: 1rem;
+    }
+
+    .setup__contact-linkedin {
+        font-size: 0.9rem;
+        margin-right: 4rem;
+        margin-top: 2.15rem;
+    }
+
+    .setup__contact-linkedin-link {
+        font-size: 0.8rem;
+        margin-top: 0.1rem;
+        width: 5rem;
+        margin-left: -0.4rem;
     }
 }
