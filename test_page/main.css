@@ -44,6 +44,7 @@
     width: 55rem;
     border: 0.3rem solid grey;
     border-radius: 3rem;
+    margin: 1rem 1rem;
 }
 
 .setup__message-heading {
@@ -68,7 +69,7 @@
     position: relative;
     font-size: 1.8rem;
     color: grey;
-    height: 4rem;
+    height: auto;
     width: 4rem;
     text-align: center;
     margin-left: 8rem;
@@ -94,10 +95,9 @@
 
 .setup__contact-linkedin {
     position: relative;
-    font-size: 0.8rem;
     color: grey;
-    height: 4rem;
-    width: 6rem;
+    height: auto;
+    width: 5rem;
     text-align: center;
     margin-right: 16rem;
     margin-top: 2.3rem;
@@ -110,7 +110,7 @@
     color: black;
     font-size: 1.2rem;
     width: 7rem;
-    margin-top: 0.8rem;
+    margin-top: 0.55rem;
     text-shadow: 0 0 0.05rem black;
     margin-left: -0.5rem;
 }
@@ -143,25 +143,25 @@
     }
 
     .setup__contact-mail {
-        font-size: 0.8rem;
+        width: 3rem;
         margin-left: 4rem;
-        margin-top: 1.6rem;
+        margin-top: 1.3rem;
     }
 
     .setup__contact-mail-link {
         font-size: 1.1rem;
-        margin-top: 0.6rem;
+        margin-top: 0.8rem;
     }
 
     .setup__contact-linkedin {
-        font-size: 1rem;
+        width: 4rem;
         margin-right: 16rem;
-        margin-top: 2.15rem;
+        margin-top: 1.7rem;
     }
 
     .setup__contact-linkedin-link {
         font-size: 1.1rem;
-        margin-top: -0.025rem;
+        margin-top: 0.4rem;
     }
 
 }
@@ -181,25 +181,25 @@
     }
 
     .setup__contact-mail {
-        font-size: 0.7rem;
+        width: 2.8rem;
         margin-left: 2rem;
-        margin-top: 1.6rem;
+        margin-top: 1.5rem;
     }
 
     .setup__contact-mail-link {
         font-size: 1rem;
-        margin-top: 0.5rem;
+        margin-top: 0.9rem;
     }
 
     .setup__contact-linkedin {
-        font-size: 0.9rem;
+        width: 3.5rem;
         margin-right: 12rem;
         margin-top: 2.15rem;
     }
 
     .setup__contact-linkedin-link {
         font-size: 1rem;
-        margin-top: -0.02rem;
+        margin-top: 0.2rem;
     }
 }
 
@@ -218,7 +218,7 @@
     }
 
     .setup__contact-mail {
-        font-size: 0.7rem;
+        width: 2.2rem;
         margin-left: 2rem;
         margin-top: 1.6rem;
     }
@@ -229,21 +229,21 @@
     }
 
     .setup__contact-linkedin {
-        font-size: 0.9rem;
+        width: 3rem;
         margin-right: 8rem;
-        margin-top: 2.15rem;
+        margin-top: 2rem;
     }
 
     .setup__contact-linkedin-link {
         font-size: 1rem;
-        margin-top: -0.03rem;
+        margin-top: 0.2rem;
     }
 }
 
-@media (max-width: 25em) {
+@media (max-width: 30em) {
     .setup__box {
         height: 13rem;
-        width: 23rem;
+        width: 32rem;
     }
 
     .setup__message-heading {
@@ -255,27 +255,133 @@
     }
 
     .setup__contact-mail {
-        font-size: 0.7rem;
-        margin-left: 1rem;
-        margin-top: 1.6rem;
+        width: 2.7rem;
+        margin-left: 5rem;
+        margin-right: 1rem;
+        margin-top: 0.9rem;
     }
 
     .setup__contact-mail-link {
-        font-size: 0.8rem;
-        margin-top: 0.6rem;
-        margin-left: 1rem;
+        display: none;
     }
 
     .setup__contact-linkedin {
-        font-size: 0.9rem;
-        margin-right: 4rem;
-        margin-top: 2.15rem;
+        width: 3.2rem;
+        margin-right: 5rem;
+        margin-left: 1rem;
+        margin-top: 1.5rem;
     }
 
     .setup__contact-linkedin-link {
-        font-size: 0.8rem;
+        display: none;
+    }
+}
+
+@media (max-width: 25em) {
+    .setup__box {
+        height: 13rem;
+        width: 32rem;
+    }
+
+    .setup__message-heading {
+        font-size: 1.3rem;
+    }
+
+    .setup__message-paragraph {
+        font-size: 0.9rem;
+    }
+
+    .setup__contact-mail {
+        width: 2.7rem;
+        margin-left: 5rem;
+        margin-right: 1rem;
         margin-top: 0.1rem;
-        width: 5rem;
-        margin-left: -0.4rem;
+    }
+
+    .setup__contact-mail-link {
+        display: none;
+    }
+
+    .setup__contact-linkedin {
+        width: 3.2rem;
+        margin-right: 5rem;
+        margin-left: 1rem;
+        margin-top: 0.7rem;
+    }
+
+    .setup__contact-linkedin-link {
+        display: none;
+    }
+}
+
+@media (max-width: 21em) {
+    .setup__box {
+        height: 13rem;
+        width: 32rem;
+    }
+
+    .setup__message-heading {
+        font-size: 1.1rem;
+    }
+
+    .setup__message-paragraph {
+        font-size: 0.8rem;
+    }
+
+    .setup__contact-mail {
+        width: 2.1rem;
+        margin-left: 5rem;
+        margin-right: 0.05rem;
+    }
+
+    .setup__contact-mail-link {
+        display: none;
+    }
+
+    .setup__contact-linkedin {
+        width: 2.5rem;
+        margin-right: 5rem;
+        margin-left: 0.05rem;
+        margin-top: 0.5rem;
+    }
+
+    .setup__contact-linkedin-link {
+        display: none;
+    }
+}
+
+@media (max-width: 18em) {
+    .setup__box {
+        height: 15rem;
+        width: 32rem;
+    }
+
+    .setup__message-heading {
+        font-size: 1.1rem;
+    }
+
+    .setup__message-paragraph {
+        font-size: 0.8rem;
+    }
+
+    .setup__contact-mail {
+        width: 2.1rem;
+        margin-left: 3rem;
+        margin-right: 0.05rem;
+    }
+
+    .setup__contact-mail-link {
+        display: none;
+    }
+
+    .setup__contact-linkedin {
+        width: 2.5rem;
+        margin-right: 3rem;
+        margin-left: 0.05rem;
+        margin-top: 0.5rem;
+    }
+
+    .setup__contact-linkedin-link {
+        display: none;
     }
 }
