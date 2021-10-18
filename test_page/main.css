@@ -262,7 +262,11 @@
     }
 
     .setup__contact-mail-link {
-        display: none;
+        opacity: 0;
+        margin-left: -5rem;
+        width: 6rem;
+        height: 3rem;
+        z-index: 2;
     }
 
     .setup__contact-linkedin {
@@ -273,7 +277,11 @@
     }
 
     .setup__contact-linkedin-link {
-        display: none;
+        opacity: 0;
+        margin-left: -5rem;
+        width: 6rem;
+        height: 3rem;
+        z-index: 2;
     }
 }
 
@@ -299,7 +307,11 @@
     }
 
     .setup__contact-mail-link {
-        display: none;
+        opacity: 0;
+        margin-left: -5rem;
+        width: 6rem;
+        height: 2.5rem;
+        z-index: 2;
     }
 
     .setup__contact-linkedin {
@@ -310,7 +322,11 @@
     }
 
     .setup__contact-linkedin-link {
-        display: none;
+        opacity: 0;
+        margin-left: -5rem;
+        width: 6rem;
+        height: 2.5rem;
+        z-index: 2;
     }
 }
 
@@ -335,7 +351,11 @@
     }
 
     .setup__contact-mail-link {
-        display: none;
+        opacity: 0;
+        margin-left: -5rem;
+        width: 5rem;
+        height: 2.5rem;
+        z-index: 2;
     }
 
     .setup__contact-linkedin {
@@ -346,7 +366,11 @@
     }
 
     .setup__contact-linkedin-link {
-        display: none;
+        opacity: 0;
+        margin-left: -5rem;
+        width: 5rem;
+        height: 2.5rem;
+        z-index: 2;
     }
 }
 
@@ -371,7 +395,11 @@
     }
 
     .setup__contact-mail-link {
-        display: none;
+        opacity: 0;
+        margin-left: -5rem;
+        width: 5rem;
+        height: 2.5rem;
+        z-index: 2;
     }
 
     .setup__contact-linkedin {
@@ -382,6 +410,10 @@
     }
 
     .setup__contact-linkedin-link {
-        display: none;
+        opacity: 0;
+        margin-left: -5rem;
+        width: 5rem;
+        height: 2.5rem;
+        z-index: 2;
     }
 }
